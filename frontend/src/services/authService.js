@@ -4,7 +4,7 @@ const authService = {
     login: (data) => {
         return api.post('/login', data)
         .then(({data}) => {
-            api.defaults.headers['Authorization'] = `Bearer ${data.token}`
+            API.defaults.headers['Authorization'] = `Bearer ${data.token}`
             return data
         })
         .catch(err => {
@@ -13,7 +13,15 @@ const authService = {
         })
     }, 
 
-    register: (data) => {},
+    register: (data) => {return api.post('/register', data)
+    .then(({data}) => {
+        API.defaults.headers['Authorization'] = `Bearer ${data.token}`
+        return data
+    })
+    .catch(err => {
+        console.log("Authentication Service Error", err)
+        throw err
+    })},
 
     logout: (data) => {}
 }
