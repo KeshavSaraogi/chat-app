@@ -2,25 +2,29 @@ import React, {useState} from 'react'
 import loginImage from '../../assets/images/login.svg'
 import './Auth.scss'
 import {Link} from 'react-router-dom'
-import axios from 'axios'
+import authService from '../../services/authService'
 
 const Login = () => {
-    const [email, setEmail] = useState('john.doe@gmail.com')
-    const [password, setPassword] = useState('secret')
-    
+    const [email, setEmail] = useState('john.doe@gmail.com');
+    const [password, setPassword] = useState('secret');
+
     const submitForm = (e) => {
-        e.preventDefault()
+        e.preventDefault();
+        
+        authService
+        .login({email, password})
+        .then(res => console.log(res))
 
-        axios.post('http://127.0.0.1:3000/login', {email, password})
-        .then(res => {
-                console.log('res', res)
-        })
-        .catch(err => {
-            console.log('err', err)
-        })
+        // axios.post('http://127.0.0.1:3000/login', { email, password })
+        //     .then(res => {
+        //         console.log("res", res);
+        //     })
+        //     .catch(err => {
+        //         console.log("err", err);
+        //     });
 
-        console.log({email, password})
-    }
+        // console.log({ email, password });
+    };
 
     return (
         <div id="auth-container">
@@ -31,26 +35,21 @@ const Login = () => {
                     </div>
                     <div id="form-selection">
                         <h2>Welcome Back</h2>
-                        <form onSubmit={submitForm}>
-                            <div className="input-field mb-1">
+                            <form onSubmit={submitForm}>
                                 <input 
-                                    onChange={e => setEmail(e.target.value)}
-                                    value = {email}
-                                    required = 'required'
-                                    type='text'
-                                    placeholder="Email" />
-                            </div>
-                            <div className="input-field mb-2">
+                                    type="email" 
+                                    value={email} 
+                                    onChange={(e) => setEmail(e.target.value)} 
+                                    placeholder="Email" 
+                                />
                                 <input 
-                                    onChange={e => setPassword(e.target.value)}
-                                    value = {password}
-                                    required = 'required'
-                                    type='password'
-                                    placeholder="Password" />
-                            </div>
-
-                            <button>LOGIN</button>
-                        </form>
+                                    type="password" 
+                                    value={password} 
+                                    onChange={(e) => setPassword(e.target.value)} 
+                                    placeholder="Password" 
+                                />
+                                <button type="submit">Login</button>
+                            </form>
                         <p>Dont Have An Account? <Link to="/register">Register</Link></p>
                     </div>
                 </div>
