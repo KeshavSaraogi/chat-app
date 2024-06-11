@@ -1,6 +1,7 @@
 import authService from '../../services/authService';
 export const LOGIN = 'LOGIN';
 export const REGISTER = 'REGISTER'
+export const LOGOUT = 'LOGOUT'
 
 export const login = (params, history) => dispatch => {
     return authService
@@ -29,3 +30,8 @@ export const register = (params, history) => dispatch => {
             console.error("Login error:", err);
         });
 };
+
+export const logout = () => dispatch => {
+    authService.logout()
+    dispatch({type: LOGOUT})
+}

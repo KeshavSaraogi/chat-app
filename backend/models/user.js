@@ -4,6 +4,7 @@ const {
 } = require('sequelize');
 
 const bcrypt = require('bcrypt')
+const config = require('../config/app')
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -21,7 +22,18 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     gender: DataTypes.STRING,
-    avatar: DataTypes.STRING
+    avatar: DataTypes.STRING,
+    avatar: {
+      type: DataTypes.STRING,
+      get() {
+        const avatar = this.getDataValue('avatar')
+        const url = `${config.appURL}:${config.appPORT}`
+
+        if (!avatar) {
+          return `${url}/${this.getDataValue('gender')}.svg`
+        }
+      }
+    }
   }, {
     sequelize,
     modelName: 'User',

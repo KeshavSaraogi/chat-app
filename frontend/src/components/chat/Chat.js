@@ -1,16 +1,16 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import useSocket from './hooks/socketConnect'
+import Navbar from './components/navbar/Navbar'
+import './Chat.scss'
 
 const Chat = () => {
-    const user = useSelector(state => state.authReducer.user)
 
     return (
-       <div>
-            <h1>Chat Screen</h1>
-            <p>Welcome, {user.firstName}</p>
-       </div>
-
-    )
+        <div id='chat-container'>
+            <Navbar />
+        </div>
+    );
 }
 
 export default Chat

@@ -13,6 +13,7 @@ app.use(cors({
 }));
 
 app.use(router)
+app.use(express.static(__dirname + '/public'))
 
 const port = 3000
     
