@@ -2,7 +2,6 @@ const User = require('../models').User
 const sequelize = require('sequelize')
 
 exports.update = async (req, res) => {
-
     if (req.file) {
         req.body.avatar = req.file.filename
     }
@@ -10,7 +9,6 @@ exports.update = async (req, res) => {
     if (typeof req.body.avatar !== 'undefined' && req.body.avatar.length === 0) delete req.body.avatar
 
     try {
-
         const [rows, result] = await User.update(req.body,
             {
                 where: {
@@ -33,9 +31,7 @@ exports.update = async (req, res) => {
 }
 
 exports.search = async (req, res) => {
-
     try {
-
         const users = await User.findAll({
             where: {
                 [sequelize.Op.or]: {
@@ -45,17 +41,14 @@ exports.search = async (req, res) => {
                             [sequelize.Op.iLike]: `%${req.query.term}%`
                         }
                     ),
-                    email: {
-                        [sequelize.Op.iLike]: `%${req.query.term}%`
-                    }
+                    email: {[sequelize.Op.iLike]: `%${req.query.term}%`}
                 },
                 [sequelize.Op.not]: {
                     id: req.user.id
                 }
-            },
+            }, 
             limit: 10
         })
-
         return res.json(users)
 
     } catch (e) {

@@ -27,6 +27,21 @@ const authService = {
         api.defaults.headers['Authrization'] = ``
         localStorage.removeItem(`user`)
         localStorage.removeItem(`token`)
+    },
+
+    updateProfile: (data) => {
+        const headers = {
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        }
+        return api.post('/users/update', data, headers)
+            .then(({ data }) => {
+                localStorage.setItem('user', JSON.stringify(data))
+                return data
+            })
+            .catch(err => {
+                console.log("Auth service err", err);
+                throw err
+            })
     }
 }
 
