@@ -41,14 +41,17 @@ exports.search = async (req, res) => {
                             [sequelize.Op.iLike]: `%${req.query.term}%`
                         }
                     ),
-                    email: {[sequelize.Op.iLike]: `%${req.query.term}%`}
+                    email: {
+                        [sequelize.Op.iLike]: `%${req.query.term}%`
+                    }
                 },
                 [sequelize.Op.not]: {
                     id: req.user.id
                 }
-            }, 
+            },
             limit: 10
         })
+        
         return res.json(users)
 
     } catch (e) {
