@@ -6,7 +6,6 @@ const Chat = models.Chat
 const ChatUser = models.ChatUser
 const Message = models.Message
 
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
@@ -19,7 +18,6 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    
     const users = await User.findAll({limit: 2})
     const chat = await Chat.create()
 
@@ -31,7 +29,7 @@ module.exports = {
       {
         chatId: chat.id,
         userId: users[1].id
-      },
+      }
     ])
 
     await Message.bulkCreate([
@@ -49,7 +47,7 @@ module.exports = {
         message: 'Long Time No Speak',
         chatId: chat.id,
         fromUserId: users[1].id
-      },
+      }
     ])
   },
 
