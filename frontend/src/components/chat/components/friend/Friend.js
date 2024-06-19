@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { userStatus } from '../../../../utils/helpers'
+import { userStatus } from '../../../../utilities/helpers'
 import './Friend.scss'
 
 const Friend = ({ chat, click }) => {

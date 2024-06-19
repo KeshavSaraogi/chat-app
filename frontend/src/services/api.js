@@ -2,7 +2,7 @@ import axios from 'axios'
 import store from '../store'
 import { logout } from '../store/actions/auth'
 
-const api = axios.create({
+const API = axios.create({
     baseURL: 'http://127.0.0.1:3000',
     headers: {
         'Accept': 'application/json',
@@ -10,7 +10,7 @@ const api = axios.create({
     }
 })
 
-api.interceptors.response.use(
+API.interceptors.response.use(
     res => {
         return res
     },
@@ -28,4 +28,4 @@ api.interceptors.response.use(
     }
 )
 
-export default api
+export default API

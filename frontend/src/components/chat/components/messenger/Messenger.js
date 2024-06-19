@@ -1,8 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import ChatHeader from '../ChatHeader/ChatHeader'
-import MessageBox from '../MessageBox/MessageBox'
-import MessageInput from '../MessageInput/MessageInput'
+import ChatHeader from '../chatHeader/ChatHeader'
+import MessageBox from '../messageBox/MessageBox'
+import MessageInput from '../messageInput/MessageInput'
 import './Messenger.scss'
 
 const Messenger = () => {

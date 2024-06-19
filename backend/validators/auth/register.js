@@ -1,4 +1,4 @@
-const {body} = require('express-validator')
+const { body } = require('express-validator')
 
 exports.rules = (() => {
     return [
@@ -6,6 +6,6 @@ exports.rules = (() => {
         body('lastName').notEmpty(),
         body('gender').notEmpty(),
         body('email').isEmail(),
-        body('password').optional().isLength({min: 5})
+        body('password').isLength({ min: 5 })
     ]
 })()

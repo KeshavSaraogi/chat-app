@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from 'react'
-import { userStatus } from '../../../../utils/helpers'
+import { userStatus } from '../../../../utilities/helpers'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useSelector } from 'react-redux'
-import Modal from '../../../Modal/Modal'
+import Modal from '../../../modal/Modal'
 import ChatService from '../../../../services/chatService'
 import './ChatHeader.scss'
 

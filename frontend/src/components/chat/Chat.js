@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import useSocket from './hooks/socketConnect'
-import Navbar from './components/Navbar/Navbar'
+import useSocket from '../chat/hooks/socketConnection'
+import Navbar from './components/navbar/Navbar'
 import { fetchChats } from '../../store/actions/chat'
-import FriendList from './components/FriendList/FriendList'
-import Messenger from './components/Messenger/Messenger'
+import FriendList from './components/friendList/FriendList'
+import Messenger from './components/messenger/Messenger'
 import './Chat.scss'
 
 const Chat = () => {

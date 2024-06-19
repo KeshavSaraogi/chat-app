@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken')
 const config = require('../config/app')
 
 exports.auth = (req, res, next) => {
-
     const authHeader = req.headers['authorization']
     const token = authHeader && authHeader.split(' ')[1]
 
@@ -11,13 +10,10 @@ exports.auth = (req, res, next) => {
     }
 
     jwt.verify(token, config.appKEY, (err, user) => {
-
         if (err) {
             return res.status(401).json({ error: err })
         }
-
         req.user = user
     })
-
     next()
 }

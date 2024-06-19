@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ChatService from '../../../../services/chatService'
 import { Picker } from 'emoji-mart'
 import { incrementScroll } from '../../../../store/actions/chat'
-import 'emoji-mart/css/emoji-mart.css'
+//import 'emoji-mart/css/emoji-mart.css'
 import './MessageInput.scss'
 
 const MessageInput = ({ chat }) => {

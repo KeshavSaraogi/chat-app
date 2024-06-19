@@ -51,7 +51,6 @@ exports.search = async (req, res) => {
             },
             limit: 10
         })
-        
         return res.json(users)
 
     } catch (e) {
